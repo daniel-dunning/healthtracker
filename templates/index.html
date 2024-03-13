@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Health Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script>
         // Function to set the current date and time as the default value for the time input field
         function setCurrentTime() {
@@ -21,37 +23,63 @@
     </script>
 </head>
 <body>
-    <h1>Health Tracker</h1>
-    <form action="/add_measurement/" method="post">
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" name="weight" step="0.01"><br>
-        <label for="glucose">Glucose Level (mmol/L):</label>
-        <input type="number" id="glucose" name="glucose"><br>
-        <label for="long_acting_insulin">Long-Acting Insulin Usage (units):</label>
-        <input type="number" id="long_acting_insulin" name="long_acting_insulin"><br>
-        <label for="short_acting_insulin">Short-Acting Insulin Usage (units):</label>
-        <input type="number" id="short_acting_insulin" name="short_acting_insulin"><br>
-        <label for="systolic">Systolic Blood Pressure (mmHg):</label>
-        <input type="number" id="systolic" name="systolic"><br>
-        <label for="diastolic">Diastolic Blood Pressure (mmHg):</label>
-        <input type="number" id="diastolic" name="diastolic"><br>
-        <label for="time">Time of Measurement:</label>
-        <input type="datetime-local" id="time" name="time" required><br>
-        <button type="submit">Add Measurement</button>
-    </form>
-    <h2>Measurements:</h2>
-    <ul>
-        {% for measurement in measurements %}
-            <li>
-                Weight: {{ measurement.weight }} kg,
-                Glucose: {{ measurement.glucose }} mmol/L,
-                Long-Acting Insulin: {{ measurement.long_acting_insulin }} units,
-                Short-Acting Insulin: {{ measurement.short_acting_insulin }} units,
-                Systolic: {{ measurement.systolic }} mmHg,
-                Diastolic: {{ measurement.diastolic }} mmHg,
-                Time: {{ measurement.time }}
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Health Tracker</h1>
+        <form action="/add_measurement/" method="post">
+            <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" class="form-control" id="weight" name="weight" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose Level (mmol/L):</label>
+                <input type="number" class="form-control" id="glucose" name="glucose">
+            </div>
+            <div class="form-group">
+                <label for="long_acting_insulin">Long-Acting Insulin Usage (units):</label>
+                <input type="number" class="form-control" id="long_acting_insulin" name="long_acting_insulin">
+            </div>
+            <div class="form-group">
+                <label for="short_acting_insulin">Short-Acting Insulin Usage (units):</label>
+                <input type="number" class="form-control" id="short_acting_insulin" name="short_acting_insulin">
+            </div>
+            <div class="form-group">
+                <label for="systolic">Systolic Blood Pressure (mmHg):</label>
+                <input type="number" class="form-control" id="systolic" name="systolic">
+            </div>
+            <div class="form-group">
+                <label for="diastolic">Diastolic Blood Pressure (mmHg):</label>
+                <input type="number" class="form-control" id="diastolic" name="diastolic">
+            </div>
+            <div class="form-group">
+                <label for="pulse">Pulse (bpm):</label>
+                <input type="number" class="form-control" id="pulse" name="pulse">
+            </div>
+            <div class="form-group">
+                <label for="fluid_intake">Fluid Intake (ml):</label>
+                <input type="number" class="form-control" id="fluid_intake" name="fluid_intake">
+            </div>
+            <div class="form-group">
+                <label for="time">Time of Measurement:</label>
+                <input type="datetime-local" class="form-control" id="time" name="time" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Measurement</button>
+        </form>
+        <h2 class="mt-5">Measurements:</h2>
+        <ul class="list-group">
+            {% for measurement in measurements[-5::] %}
+                <li class="list-group-item">
+                    <strong>Weight:</strong> {{ measurement.weight }} kg,
+                    <strong>Glucose:</strong> {{ measurement.glucose }} mmol/L,
+                    <strong>Long-Acting Insulin:</strong> {{ measurement.long_acting_insulin }} units,
+                    <strong>Short-Acting Insulin:</strong> {{ measurement.short_acting_insulin }} units,
+                    <strong>Systolic:</strong> {{ measurement.systolic }} mmHg,
+                    <strong>Diastolic:</strong> {{ measurement.diastolic }} mmHg,
+                    <strong>Pulse:</strong> {{ measurement.pulse }} bpm,
+                    <strong>Fluid Intake:</strong> {{ measurement.fluid_intake }} ml,
+                    <strong>Time:</strong> {{ measurement.time }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https

@@ -7,5 +7,5 @@ To do:
 * visualize display
 * add twitter bootstrap / beautify form
 * add docker
-* advanced reporting
+* add water in take
 * conform to PEP

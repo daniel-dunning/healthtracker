@@ -2,7 +2,6 @@ from fastapi import FastAPI, Form, Request, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
-from dateutil import parser
 import json
 
 app = FastAPI()
@@ -12,7 +11,7 @@ class HealthTracker:
     def __init__(self):
         self.measurements = []
 
-    def add_measurement(self, weight=None, glucose=None, long_acting_insulin=None, short_acting_insulin=None, systolic=None, diastolic=None, time=None):
+    def add_measurement(self, weight=None, glucose=None, long_acting_insulin=None, short_acting_insulin=None, systolic=None, diastolic=None, pulse=None, fluid_intake=None, time=None):
         measurement = {
             "weight": weight,
             "glucose": glucose,
@@ -20,6 +19,8 @@ class HealthTracker:
             "short_acting_insulin": short_acting_insulin,
             "systolic": systolic,
             "diastolic": diastolic,
+            "pulse": pulse,
+            "fluid_intake": fluid_intake,
             "time": time.strftime("%Y-%m-%d %H:%M:%S") if time else None
         }
         self.measurements.append(measurement)
@@ -56,9 +57,11 @@ async def add_measurement(request: Request,
                           short_acting_insulin: float = Form(None),
                           systolic: int = Form(None),
                           diastolic: int = Form(None),
+                          pulse: int = Form(None),
+                          fluid_intake: int = Form(None),
                           time: str = Form(...)):
-    measurement_time = parser.parse(time)
-    tracker.add_measurement(weight, glucose, long_acting_insulin, short_acting_insulin, systolic, diastolic, measurement_time)
+    measurement_time = datetime.strptime(time, "%Y-%m-%d %H:%M:%S") if time else None
+    tracker.add_measurement(weight, glucose, long_acting_insulin, short_acting_insulin, systolic, diastolic, pulse, fluid_intake, measurement_time)
     return {"message": "Measurement added successfully."}
 
 @app.get("/measurements/")

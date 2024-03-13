@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tracker</title>
+    <script>
+        // Function to set the current date and time as the default value for the time input field
+        function setCurrentTime() {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = (now.getMonth() + 1).toString().padStart(2, '0');
+            var day = now.getDate().toString().padStart(2, '0');
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var currentTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+            document.getElementById("time").value = currentTime;
+        }
+        // Call the function when the page loads
+        window.onload = setCurrentTime;
+    </script>
+</head>
+<body>
+    <h1>Health Tracker</h1>
+    <form action="/add_measurement/" method="post">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" step="0.01"><br>
+        <label for="glucose">Glucose Level (mmol/L):</label>
+        <input type="number" id="glucose" name="glucose"><br>
+        <label for="long_acting_insulin">Long-Acting Insulin Usage (units):</label>
+        <input type="number" id="long_acting_insulin" name="long_acting_insulin"><br>
+        <label for="short_acting_insulin">Short-Acting Insulin Usage (units):</label>
+        <input type="number" id="short_acting_insulin" name="short_acting_insulin"><br>
+        <label for="systolic">Systolic Blood Pressure (mmHg):</label>
+        <input type="number" id="systolic" name="systolic"><br>
+        <label for="diastolic">Diastolic Blood Pressure (mmHg):</label>
+        <input type="number" id="diastolic" name="diastolic"><br>
+        <label for="time">Time of Measurement:</label>
+        <input type="datetime-local" id="time" name="time" required><br>
+        <button type="submit">Add Measurement</button>
+    </form>
+    <h2>Measurements:</h2>
+    <ul>
+        {% for measurement in measurements %}
+            <li>
+                Weight: {{ measurement.weight }} kg,
+                Glucose: {{ measurement.glucose }} mmol/L,
+                Long-Acting Insulin: {{ measurement.long_acting_insulin }} units,
+                Short-Acting Insulin: {{ measurement.short_acting_insulin }} units,
+                Systolic: {{ measurement.systolic }} mmHg,
+                Diastolic: {{ measurement.diastolic }} mmHg,
+                Time: {{ measurement.time }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

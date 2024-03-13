@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Form, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Form, Request, HTTPException
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
+from dateutil import parser
 import json
 
 app = FastAPI()
@@ -33,8 +34,14 @@ class HealthTracker:
     def get_measurements(self):
         return self.measurements
 
+    def load_from_file(self):
+        with open("measurements.json", "r") as file:
+            for line in file:
+                measurement = json.loads(line.strip())
+                self.measurements.append(measurement)
 
 tracker = HealthTracker()
+tracker.load_from_file()  # Load measurements from file at startup
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
@@ -50,10 +57,14 @@ async def add_measurement(request: Request,
                           systolic: int = Form(None),
                           diastolic: int = Form(None),
                           time: str = Form(...)):
-    measurement_time = datetime.strptime(time, "%Y-%m-%d %H:%M:%S") if time else None
+    measurement_time = parser.parse(time)
     tracker.add_measurement(weight, glucose, long_acting_insulin, short_acting_insulin, systolic, diastolic, measurement_time)
     return {"message": "Measurement added successfully."}
 
+@app.get("/measurements/")
+async def get_all_measurements():
+    measurements = tracker.get_measurements()
+    return JSONResponse(content=measurements)
 
 if __name__ == "__main__":
     import uvicorn

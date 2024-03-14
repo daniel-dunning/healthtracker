@@ -9,4 +9,6 @@ To do:
 * visualize display
 *  save measurements to google sheets documenrt
 *  implement daily summary process
+*  make mobile friendly
+*  update endpoints for forms
 * conform to PEP

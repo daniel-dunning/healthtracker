@@ -1,4 +1,3 @@
-{"weight": null, "glucose": null, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": 55, "diastolic": 55, "time": "2024-03-13 12:10:00"}
 {"weight": null, "glucose": 135.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": null, "diastolic": null, "time": "2024-03-13 12:12:00"}
 {"weight": null, "glucose": 168.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": null, "diastolic": null, "time": "2024-03-13 14:55:00"}
 {"weight": null, "glucose": null, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": 165, "diastolic": 72, "time": "2024-03-13 14:59:00"}
@@ -8,3 +7,6 @@
 {"weight": null, "glucose": 98.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": null, "diastolic": null, "pulse": null, "fluid_intake": null, "time": "2024-03-13 06:09:00"}
 {"weight": null, "glucose": 135.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": null, "diastolic": null, "pulse": null, "fluid_intake": null, "time": "2024-03-13 11:09:00"}
 {"weight": null, "glucose": 168.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": null, "diastolic": null, "pulse": null, "fluid_intake": null, "time": "2024-03-13 13:52:00"}
+{"weight": 122.2, "glucose": 188.0, "long_acting_insulin": 25.0, "short_acting_insulin": 10.0, "systolic": 141, "diastolic": 71, "pulse": 81, "fluid_intake": 709, "time": "2024-03-18 12:01:00"}
+{"weight": null, "glucose": 140.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": 145, "diastolic": 74, "pulse": 71, "fluid_intake": null, "time": "2024-03-18 13:50:00"}
+{"weight": null, "glucose": 259.0, "long_acting_insulin": null, "short_acting_insulin": null, "systolic": 154, "diastolic": 73, "pulse": 73, "fluid_intake": 500, "time": "2024-03-18 19:37:00"}

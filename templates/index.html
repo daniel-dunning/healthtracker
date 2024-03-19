@@ -62,24 +62,37 @@
                 <label for="time">Time of Measurement:</label>
                 <input type="datetime-local" class="form-control" id="time" name="time" required>
             </div>
-            <button type="submit" class="btn btn-primary">Add Measurement</button>
+
+            <button type="submit" value=1 name="from_form" class="btn btn-primary">Add Measurement</button>
         </form>
         <h2 class="mt-5">Measurements:</h2>
-        <ul class="list-group">
-            {% for measurement in measurements[-5::] %}
-                <li class="list-group-item">
-                    <strong>Weight:</strong> {{ measurement.weight }} kg,
-                    <strong>Glucose:</strong> {{ measurement.glucose }} mmol/L,
-                    <strong>Long-Acting Insulin:</strong> {{ measurement.long_acting_insulin }} units,
-                    <strong>Short-Acting Insulin:</strong> {{ measurement.short_acting_insulin }} units,
-                    <strong>Systolic:</strong> {{ measurement.systolic }} mmHg,
-                    <strong>Diastolic:</strong> {{ measurement.diastolic }} mmHg,
-                    <strong>Pulse:</strong> {{ measurement.pulse }} bpm,
-                    <strong>Fluid Intake:</strong> {{ measurement.fluid_intake }} ml,
-                    <strong>Time:</strong> {{ measurement.time }}
-                </li>
-            {% endfor %}
-        </ul>
+
+        <table border='1' style='border-collapse:collapse'>
+           <TR>
+           <TH>Time</TH>
+           <TH>Weight</TH>
+           <TH>Glucose</TH>
+           <TH>Long Acting</TH>
+           <TH>Short Acting</TH>
+           <TH>Systolic</TH>
+           <TH>Diastolic</TH>
+           <TH>Pulse</TH>
+           <TH>Fluid Intake</TH>
+           </TR>
+        {% for measurement in measurements[-1:5:-1] %}
+        <TR>
+           <TD>{{measurement.time}}</TD>
+           <TD>{{measurement.weight}}</TD>
+           <TD>{{measurement.glucose}}</TD>
+           <TD>{{measurement.long_acting_insulin}}</TD>
+           <TD>{{measurement.short_acting_insulin}}</TD>
+           <TD>{{measurement.systolic}}</TD>
+           <TD>{{measurement.diastolic}}</TD>
+           <TD>{{measurement.pulse}}</TD>
+           <TD>{{measurement.fluid_intake}}</TD>
+        </TR>
+        {% endfor %}
+        </table>
     </div>
     <!-- Bootstrap JS -->
     <script src="https

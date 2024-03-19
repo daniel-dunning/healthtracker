@@ -12,8 +12,8 @@ Change log:
 To do:
 * generate a report collapsing measurements into days and time slots (pandas)
 * visualize display
-* save measurements to google sheets documenrt
-* implement daily summary process
+* ~~save measurements to google sheets document~~
+* ~~implement daily summary process~~
 * make mobile friendly
 * ~~update endpoints for forms~~
 * conform to PEP

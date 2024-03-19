@@ -7,7 +7,7 @@ Program designed to make it easier to track my vital signs
 Change log:
 * 3/18/24 - redirect back to home page after adding measurements
 * 3/18/24 - change measurement output to readable table sorted by reverse order
-* change measurement sort by date so most recent dates can be properly sorted if they were added later
+* 3/18/24 - change measurement sort by date so most recent dates can be properly sorted if they were added later
 
 To do:
 * generate a report collapsing measurements into days and time slots (pandas)

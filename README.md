@@ -19,3 +19,4 @@ To do:
 * ~~change measurement sort by date so most recent dates can be properly sorted if they were added later~~
 * implement Sqlalchemy models for data storage
 * implement dbhub.io for online sqlite db storage
+* implement test mode and production mode for data storage so as to not mess up production data

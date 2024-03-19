@@ -79,7 +79,7 @@
            <TH>Pulse</TH>
            <TH>Fluid Intake</TH>
            </TR>
-        {% for measurement in measurements[-1:5:-1] %}
+        {% for measurement in measurements[-1::-1] %}
         <TR>
            <TD>{{measurement.time}}</TD>
            <TD>{{measurement.weight}}</TD>

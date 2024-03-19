@@ -43,9 +43,14 @@ class HealthTracker:
         def replace_none_with_empty_str(some_dict):
             return {k: ('' if v is None else v) for k, v in some_dict.items()}
 
+        # replace None with blanks for formatting
         for measurement in self.measurements:
             m = replace_none_with_empty_str(measurement)
             new_measurements.append(m)
+
+        # sort measurements
+        new_measurements = sorted(new_measurements, key=lambda x: x['time'])
+
         return new_measurements
 
 
@@ -95,8 +100,9 @@ def list_to_html_table(measurements:list=None):
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
     measurements = tracker.get_measurements()
-    # m2 = convert_measurements_to_list(measurements)
-    # measurements = tabulate(m2,headers=tracker.m_keys,tablefmt="html")
+    m2 = convert_measurements_to_list(measurements)
+    m2 = tabulate(m2,headers=tracker.m_keys,tablefmt="grid")
+    print(m2)
     # Html_file = open("measurement.html", "w")
     # Html_file.write(measurements)
     # Html_file.close()

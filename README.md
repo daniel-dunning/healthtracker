@@ -19,6 +19,10 @@ To do:
 * conform to PEP
 * ~~change measurement sort by date so most recent dates can be properly sorted if they were added later~~
 * implement Sqlalchemy models for data storage
-* implement dbhub.io for online sqlite db storage
+* *implement dbhub.io for online sqlite db storage-reviewing*
 * implement test mode and production mode for data storage so as to not mess up production data
 * implement-online-data-storage
+* Review utilizing mysql for producuton and sqlite for testing
+* Add download production data endpoint
+* Add upload offline data to production endpoint
+* Implement code documentation

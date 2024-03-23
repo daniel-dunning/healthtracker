@@ -1,0 +1,5 @@
+[
+    {"DB":"SQLITE","DB_URL":"sqlite:///health_tracker.db"},
+    {"DB":"SQLITE","DB_URL":"postgresql://healthtracker_user:87ZOMZeehflroBD8PQa8EJEv80g8N6SI@dpg-cnuetfe3e1ms73coevqg-a.oregon-postgres.render.com/healthtracker"},
+    {"DB":"MYSQL","DB_URL":"mysql://root:health-metrics@35.199.22.212/health-metrics"}
+]

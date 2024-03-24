@@ -100,6 +100,7 @@ db_session = SessionLocal()
 # measurement = MeasurementBase(**measurement_data)
 # result = tracker.add_measurement(db_session, measurement)
 # print(result.id)
+
 measurements = tracker.get_measurements(db_session)
 print(measurements)
 
@@ -144,6 +145,36 @@ async def add_measurement(request: Request,
         return RedirectResponse(redirect_url, status_code=status.HTTP_303_SEE_OTHER)
     else:
         return {"message": "Measurement added successfully."}
+
+@app.post("/load_measurement")
+async def load_measurement_from_json():
+
+    try:
+        with open("measurements.json", "r") as f:
+            data = json.load(f)
+
+        for item in data:
+            # print(item)
+            measurement_data = {
+                "weight": item['weight'],
+                "glucose": item['glucose'],
+                "long_acting_insulin": item['long_acting_insulin'],
+                "short_acting_insulin": item['short_acting_insulin'],
+                "systolic": item['systolic'],
+                "diastolic": item['diastolic'],
+                "pulse": item['pulse'],
+                "fluid_intake": item['fluid_intake'],
+                "time":  item['time']
+                }
+            new_measurement = MeasurementBase(**measurement_data)
+            tracker.add_measurement(db_session,new_measurement)
+
+        return {"message": "Measurement added successfully."}
+
+    except Exception as error:
+        return {"message": error}
+
+
 
 if __name__ == "__main__":
     import uvicorn
